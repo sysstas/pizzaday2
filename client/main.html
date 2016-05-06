@@ -1,0 +1,26 @@
+<head>
+  <title>Pizzaday2</title>
+</head>
+
+<template name="ApplicationLayout">
+{{> yield "navbar"}}
+{{> yield "main"}}
+</template>
+
+
+<template name="welcome">
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Welcome to PizzaDay !</h1>
+      <a href="/landing" class="btn btn-info">ENTER</a>
+    </div>
+  </div>
+</template> 
+
+<template name="landing">
+  <div class="container top-margin darkblue">   
+     <div class="row">      
+      {{> buttons}}
+    </div>      
+  </div>    
+</template>
