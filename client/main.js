@@ -1,10 +1,17 @@
-/////////////// Routing////////////// 
-Router.configure({
-  layoutTemplate: 'ApplicationLayout'
-});
+import { Meteor } from 'meteor/meteor';
 
-Router.route('/', function () {
-  this.render('welcome', {
-    to:"main"
-  });
+import '../imports/lib/router.js';
+import '../imports/ui/methods.js';
+
+
+
+
+Template.welcome.events({
+  "click .hiClass": function(event) {
+    
+
+    Meteor.call('first');
+    
+    
+  }
 });
