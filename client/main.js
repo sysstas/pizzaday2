@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 
 import '../imports/lib/router.js';
-import '../imports/ui/methods.js';
+import '../imports/api/methods.js';
 
 
 

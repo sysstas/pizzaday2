@@ -17,7 +17,12 @@ standard-minifier-js    # JS minifier run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
 
-accounts-ui
-accounts-password
-twbs:bootstrap
 iron:router
+twbs:bootstrap
+accounts-password
+accounts-google
+service-configuration
+email
+check
+mistereo:identicon
+ian:accounts-ui-bootstrap-3
