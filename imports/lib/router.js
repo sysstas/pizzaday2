@@ -2,6 +2,7 @@ import '../ui/templates/ApplicationLayout.html';
 import '../ui/templates/welcome.html';
 import '../ui/templates/home.html';
 import '../ui/templates/navbar.html';
+import '../ui/templates/uiControls.html';
 
 
 // Configuring router

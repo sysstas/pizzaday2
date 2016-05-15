@@ -1,0 +1,32 @@
+<template name="listGroups">
+	<div class="col-xs-12 col-sm-6 col-md-6">
+		<h2>My groups</h2>
+			<div class="media">
+	  		<div class="media-left media-middle">
+					<a class="idadd" href="/groups/{{_id}}"><img src="{{identicon groupName}}"></a>
+	  		</div>
+	  		<div class="media-body">
+	  			<a class="idadd" href="/groups/{{_id}}"><h4 class="media-heading">{{groupName}}</h4></a>
+	  			
+	  				<p>Delete groupe   <button class="btn btn-danger delete">&times;</button></p>
+	  			
+	  		</div>
+	  	</div>				  		
+	</div>		
+</template>
+
+ <!-- {{#each groupeNames}}
+	  		{{#if myGroupe}}					
+			  	<div class="media">
+			  		<div class="media-left media-middle">
+							<a class="idadd" href="/groups/{{_id}}"><img src="{{identicon groupName}}"></a>
+			  		</div>
+			  		<div class="media-body">
+			  			<a class="idadd" href="/groups/{{_id}}"><h4 class="media-heading">{{groupName}}</h4></a>
+			  			{{#if isAdmin}}
+			  				<p>Delete groupe   <button class="btn btn-danger delete">&times;</button></p>
+			  			{{/if}}
+			  		</div>
+			  	</div>				  							
+				{{/if}}
+			{{/each}}			  	 -->
