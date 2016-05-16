@@ -1,8 +1,14 @@
+// first level
 import '../ui/templates/ApplicationLayout.html';
 import '../ui/templates/welcome.html';
-import '../ui/templates/home.html';
-import '../ui/templates/navbar.html';
-import '../ui/templates/uiControls.html';
+
+// second level
+import '../ui/templates/home/home.html';
+import '../ui/templates/navbar/navbar.html';
+
+// third level
+import '../ui/templates/home/commonInterface/uiControls.html';
+import '../ui/templates/home/commonInterface/listGroups.html';
 
 
 // Configuring router

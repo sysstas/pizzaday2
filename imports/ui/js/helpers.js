@@ -1,4 +1,13 @@
-Template.groupeList.helpers({
+// first level
+
+
+// second level
+
+
+// third level
+
+
+Template.listGroupe.helpers({
   groupeNames:function(){      
     return Groups.find({});
   },
