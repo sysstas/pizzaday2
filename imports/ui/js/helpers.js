@@ -1,36 +1,22 @@
+import { Meteor } from 'meteor/meteor';
+import { Template } from 'meteor/templating';
+import { Groups } from '../../api/collection.js';
+
+
+
+
 // first level
 
 
 // second level
-
+Meteor.subscribe('groups');
 
 // third level
 
 
-Template.listGroupe.helpers({
-  groupeNames:function(){      
-    return Groups.find({});
-  },
-  myGroupe:function(){
-    var isInGroupe = false;
-   if ( Meteor.userId() == this.creator ) {
-      return true;
-    }
-    else{
-      for (var i = this.user.length - 1; i >= 0; i--) 
-              {
-                 if (this.user[i] == Meteor.userId()) {
-                  return true;
-                 }
-                 else 
-                  return false;   
-              };
-    }
-  },
-  isAdmin:function(){    
-    if ( Meteor.userId() == this.creator ) {
-      return true;
-    }
-    else return false;
-  } 
+Template.listOfGroups.helpers({
+  groups:function(){      
+    
+     return Groups.find({});
+  }  
 });
