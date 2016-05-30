@@ -1,0 +1,45 @@
+<template name="adminControlPanel">	
+<h1>Admin Controls</h1>
+	{{#if  isAdmin}} 
+		<h1>Admin panel</h1>
+		<hr>
+		{{#if isevent}}
+			{{#if statusBuying}}
+				<a class="btn btn-danger endEvent" href="#">End the event</a>
+				<a class="btn btn-success getEmail" href="#">Get email with final list</a>
+				<hr>
+				<h3>Total money: {{totalMoney}} $</h3>
+				<hr>
+				<h3>All dishes ordered:</h3>
+				{{#each totalDishes}}								
+					<h4>Dish: {{this}} </h4>
+				{{/each}}
+			{{else}}
+				<a class="btn btn-info statusBuying" href="#">Change event status to Buying</a>
+				<hr>
+			{{/if}}						
+		{{else}}					
+			{{> addEvent}}
+		{{/if}}
+		{{> listOfUsers}}
+		<hr>
+		<h3>Users in groupe</h3>
+ 		<ul>
+			{{#each usersInGroupe}}
+				<li>
+					<span class="label label-success">{{this}}</span>
+					<span class="btn btn-danger deleteMember">&times;</span>										
+				</li>	
+			{{/each}}						
+ 		</ul>
+ 		<hr>
+ 		<h3>Email settings</h3>
+ 		<form class="changeEmailConfirm">
+    	<h4>Change text of confirm order email</h4>		        
+      <textarea rows="5" cols="45" name="changeEmailConf">
+				{{changeEmailConfirm}}
+			</textarea> 
+      <input type="submit" value="Submit" class="btn btn-info">
+  	</form>
+	{{/if}}		 
+</template>

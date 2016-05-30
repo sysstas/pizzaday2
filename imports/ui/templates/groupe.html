@@ -1,0 +1,23 @@
+
+<template name="groupe">
+  <div class="container top-margin darkblue">
+  	<div class="row">
+  		<div class="jumbotron groupe">
+			  <h2>Groupe: "{{groupName}}"</h2>
+			  <h4>Admin is {{creator}}</h4>
+			  <h4>Event status: {{eventstatus}}</h4>
+			  {{#if isevent}}
+			  <h4>Next Pizza Day will be {{eventdate}}</h4>
+			  {{/if}}
+		  </div><!-- / Jumbotron -->
+		  <div class="col-xs-12 col-sm-8 col-md-8 ">
+			  {{> adminInfoPanel}}
+			  {{> userPanel}}
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4 admincolor">
+			  {{> adminControlPanel}}
+			</div>
+		</div><!-- / Row -->  
+	</div><!-- / Container -->	
+</template>
+	

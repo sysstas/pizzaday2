@@ -1,0 +1,13 @@
+<template name="listOfUsers">
+	<div class="col-xs-12 col-sm-12 col-md-12">
+		<h3>Add Users</h3	>		
+				{{#each user}}
+			  	<ul>
+			  		<li>
+			  		{{username}}  <a class="btn btn-info addtogroupe" href="#">Add to groupe</a>
+			  		</li>
+			  	</ul>				  
+				{{/each}}
+				
+	</div>		
+</template>

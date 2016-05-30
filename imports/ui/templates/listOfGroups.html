@@ -1,0 +1,17 @@
+<template name="listOfGroups">	
+	<div class="col-xs-12 col-sm-6 col-md-6">
+		<h2>All groups</h2>
+		{{#each groups}}
+			<div class="media">
+		  		<div class="media-left media-middle">
+						<a class="idadd" href="/groups/{{_id}}"><img src="{{identicon groupName}}"></a>
+		  		</div>
+		  		<div class="media-body">
+		  			<a class="idadd" href="/groups/{{_id}}"><h4 class="media-heading">{{groupName}}</h4></a>
+		  		</div>
+	  		</div>
+	  	{{/each}}				  		
+	</div>
+</template>
+
+ 

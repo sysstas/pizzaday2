@@ -1,0 +1,19 @@
+<template name="adminInfoPanel">	
+	
+	{{#if isAdmin}}
+	<h1> Admin info</h1>
+		{{#if isevent}}
+	  	<div class="col-xs-12 col-sm-12 col-md-12 ">
+	  		<h1>Users confirmed their part in event</h1>
+	  			{{#each userConfirmed}}			  				
+						<span class="label label-success">{{this}}</span>							
+	  			{{/each}}
+	  		<h1>Users ordered dishes</h1>
+	  			{{#each userOrdered}}
+						<span class="label label-success">{{this}}</span>
+	  			{{/each}}
+	  		<hr>	
+	  	</div>
+		{{/if}}		  		
+	{{/if}}	
+</template>

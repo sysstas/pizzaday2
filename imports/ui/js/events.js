@@ -1,15 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 
-
-// first level
-
-
-// second level
-
-
-// third level
-Template.uiControls.events({
+Template.createNewGroupe.events({
   "submit .createNewGroupe": function(event) {
     event.preventDefault();
 
@@ -22,3 +14,21 @@ Template.uiControls.events({
     event.target.text.value = "";  
   }
 });
+
+
+Template.addEvent.events({ 
+//// Adding new event //// 
+  "submit .addEvent-form":function(event){
+    event.preventDefault();
+    let eventDate = event.target.eventDate.value;
+    let thisGroupeId = Session.get("idgroupe");
+        
+    
+    Meteor.call('pizzaDay.createNewEvent', eventDate, thisGroupeId);
+    
+    // Clear form
+    event.target.eventDate.value = "";
+  }
+});  
+
+

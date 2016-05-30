@@ -1,0 +1,19 @@
+<template name="userPanel">	
+	<div class="col-xs-12 col-sm-12 col-md-12 ">
+	  {{#if isevent}}
+		<!-- 	{{> Pizzaday}} -->
+		{{else}}
+			<h1>There is no event now...</h1>
+		{{/if}}	
+	</div>				
+	<div class="col-xs-12 col-sm-12 col-md-12 ">
+		<hr>
+		<h2>Menu</h2>
+		<!-- {{#each menu}}
+  	<div class="col-xs-12 col-sm-12 col-md-12">
+  		<h4>{{dish}} - {{price}}$</h4>
+  	</div>
+		{{/each}} -->
+		<span>add dish</span><!-- {{> dishadd_form}} -->
+	</div>			
+</template>

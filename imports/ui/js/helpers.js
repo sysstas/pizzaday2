@@ -3,20 +3,39 @@ import { Template } from 'meteor/templating';
 import { Groups } from '../../api/collection.js';
 
 
-
-
-// first level
-
-
-// second level
 Meteor.subscribe('groups');
-
-// third level
 
 
 Template.listOfGroups.helpers({
-  groups:function(){      
-    
+  groups:function(){ 
      return Groups.find({});
   }  
 });
+
+
+Template.adminInfoPanel.helpers({
+	isAdmin:function(){ 
+		let self = this;   
+    return isAdmin.call(self);
+  },
+});
+
+Template.adminControlPanel.helpers({
+	isAdmin:function(){ 
+		let self = this;   
+    return isAdmin.call(self);
+  },
+});
+
+
+
+
+///////////////////// Helper Functions ////////////////////////
+
+var isAdmin = function(){    
+							  if ( Meteor.userId() == this.creator ) {							  	
+							    return true;
+							  }
+							  else return false
+							};
+
