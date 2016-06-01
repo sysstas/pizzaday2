@@ -72,6 +72,28 @@ Template.listOfUsers.events({
       }
     );
   },  
+});
+
+
+Template.addDishToMenu.events({
+  "click .js-toggle-form":function(event){
+    $("#addDishToMenu").toggle('slow');
+  }, 
+
+  "submit .js-form":function(event){
+    
+    event.preventDefault();
+    
+    let thisGroupeId = Session.get("idgroupe");
+    let dishname = event.target.dishname.value;
+    let price = event.target.price.value;         
+    
+    Meteor.call('menu.dish.add', thisGroupeId, dishname, price);
+    
+       
+    $("#addDishToMenu").toggle('hide');  
+    return false;
+  }
 }); 
 
 

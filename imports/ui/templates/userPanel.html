@@ -9,11 +9,12 @@
 	<div class="col-xs-12 col-sm-12 col-md-12 ">
 		<hr>
 		<h2>Menu</h2>
-		<!-- {{#each menu}}
-  	<div class="col-xs-12 col-sm-12 col-md-12">
-  		<h4>{{dish}} - {{price}}$</h4>
-  	</div>
-		{{/each}} -->
-		<span>add dish</span><!-- {{> dishadd_form}} -->
+		{{#each menu}}
+	  	<div class="col-xs-12 col-sm-12 col-md-12">
+	  		<h4>{{dish}} - {{price}}$</h4>
+	  	</div>
+		{{/each}}
+		<span>add dish</span>
+		{{> addDishToMenu}}
 	</div>			
 </template>

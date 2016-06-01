@@ -13,6 +13,7 @@ import '../ui/templates/userPanel.html';
 import '../ui/templates/adminControlPanel.html';
 import '../ui/templates/addEvent.html';
 import '../ui/templates/listOfUsers.html';
+import '../ui/templates/addDishToMenu.html';
 
 
 

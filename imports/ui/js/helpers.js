@@ -35,6 +35,14 @@ Template.adminControlPanel.helpers({
 });
 
 
+Template.userPanel.helpers({
+  menu:function(){       
+    return  Groups.findOne({ _id: Session.get("idgroupe") }).menu; 
+  },
+});
+  
+
+
 
 
 

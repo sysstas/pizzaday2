@@ -120,4 +120,16 @@ Meteor.methods({
   },
 
 	
+	// Add dish to menu of groupe
+	'menu.dish.add':function( thisGroupeId, dishname, price){
+		Groups.update({ _id: thisGroupeId },{
+      $push:{
+              menu: {
+                     dish:dishname, 
+                     price:price  
+                    }
+            }
+    });  
+	},
+	
 });
