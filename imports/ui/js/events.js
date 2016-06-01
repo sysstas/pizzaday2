@@ -33,26 +33,22 @@ Template.addEvent.events({
 
 
 Template.adminControlPanel.events({
-	"click .setBuyingStatus": function () { 
-		//// Changing event status to "Buying" 
+  // Changing event status to "Buying" 
+	"click .setBuyingStatus": function () {		
 		let thisGroupeId = Session.get("idgroupe");
-		
 		Meteor.call('pizzaDay.changeStatusToBuying', thisGroupeId); 
 	},
 
+  // End of event 
   "click .setEventEnd": function () {
-  	//// End of event ////  
-  	let thisGroupeId = Session.get("idgroupe");            
-	  
-	  Meteor.call('pizzaDay.endEvent', thisGroupeId);
+  	let thisGroupeId = Session.get("idgroupe");
+	 Meteor.call('pizzaDay.endEvent', thisGroupeId);
 	},
 
-  "click .deleteMember":function () {
-    //let thisGroupeId = Session.get("idgroupe");
-    console.log(this);
-    /*var  userId = this.id;          
-    Meteor.call('groupe.user.remove', thisGroupeId, userId);*/
-
+  // Remove user from groupe
+  "click .removeUser":function () {
+    let thisGroupeId = Session.get("idgroupe");             
+    Meteor.call('groupe.user.remove', thisGroupeId, this.id);
   },
 });
 

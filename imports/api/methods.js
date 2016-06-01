@@ -88,8 +88,7 @@ Meteor.methods({
 
 		
 	/// Adding user to the groupe
-  'groupe.user.addNew':function(thisGroupeId, userId){  	
-  	//// Adding user id to this groupe 
+  'groupe.user.addNew':function(thisGroupeId, userId){
   	let user = ListOfUsers.findOne({"id": userId});                    
     let userInfo =	{
 				    					"id": userId,
@@ -107,8 +106,18 @@ Meteor.methods({
             }
     });   
   },
-		
 
+  // Remove user from groupe
+  'groupe.user.remove':function(thisGroupeId, userId){  	
+		Groups.update({ _id: thisGroupeId},{
+				$pull:{
+					user:{
+						id: userId
+					}
+				}
+			}
+		);
+  },
 
 	
 });
