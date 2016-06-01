@@ -31,6 +31,7 @@ Template.addEvent.events({
   }
 });  
 
+
 Template.adminControlPanel.events({
 	"click .setBuyingStatus": function () { 
 		//// Changing event status to "Buying" 
@@ -44,51 +45,17 @@ Template.adminControlPanel.events({
   	let thisGroupeId = Session.get("idgroupe");            
 	  
 	  Meteor.call('pizzaDay.endEvent', thisGroupeId);
-	  
-	  /*var Users = Groups.findOne({ _id: Session.get("idgroupe") }).user;               
-	  for (var i = Users.length - 1; i >= 0; i--) {
-	    var id =Userlist.findOne({id: Users[i]})._id;
-	    
-	    Userlist.update({_id: id},{   //// Set Event stats to empty ////   
-	      $set: { 
-	            confirm: false, 
-	            complete: false,
-	            order: [],
-	            price: []
-	          }
-	    });
-	  };    */
 	},
 
-    
-    /*var totalArray = Groups.findOne({_id:Session.get("idgroupe")}).totalOrder; ///////////////
-    var array_elements = new Array();                                                       //
-    for (var i = totalArray.length - 1; i >= 0; i--) {                                      //
-      array_elements[i] = totalArray[i].totalorder                                          //
-    };                                                                                      //
-    array_elements.sort();                                                                  //
-    var current = null;                                                                     //
-    var cnt = 0;                                                                            //
-    for (var i = array_elements.length -1 ;  i >= 0; i--) {                                 //
-      if (array_elements[i] != current) {                                                   //
-        if (cnt > 0) {                                                                      //
-          Groups.update({ _id: Session.get("idgroupe") },{                                  //
-            $push: { totalDISHES: current + ' : ' + cnt}                                    //
-          });                                                                               //
-        }                             ////////////////////////////////////////////////////////
-        current = array_elements[i];  //// Here I forming user friendly list from array///////
-        cnt = 1;                      ////////////////////////////////////////////////////////
-      } else {                                                                              //
-        cnt++;                                                                              //
-      }                                                                                     //
-    }                                                                                       //
-    if (cnt > 0) {                                                                          //
-      Groups.update({ _id: Session.get("idgroupe") },{                                      //
-        $push: { totalDISHES: current + ' : ' + cnt}                                        //          
-      });                                                                                   //  
-    }   //////////////////////////////////////////////////////////////////////////////////////
-  },*/
+  "click .deleteMember":function () {
+    //let thisGroupeId = Session.get("idgroupe");
+    console.log(this);
+    /*var  userId = this.id;          
+    Meteor.call('groupe.user.remove', thisGroupeId, userId);*/
+
+  },
 });
+
 
 Template.listOfUsers.events({
   "click .addToGroupe": function () {    
@@ -105,8 +72,7 @@ Template.listOfUsers.events({
             // If user is not in the groupe - adding it to the groupe            
             Meteor.call('groupe.user.addNew', thisGroupeId, userId);
           }
-        }  
-          
+        }          
       }
     );
   },  

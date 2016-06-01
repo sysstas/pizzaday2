@@ -46,6 +46,7 @@ Meteor.methods({
 
 	// Creating new groupe
 	'groupe.createNew': function(groupName, creator){
+		let user = ListOfUsers.findOne({"id": creator});
 		Groups.insert({ 
 			groupName: groupName,
 			creator: creator,
@@ -53,8 +54,10 @@ Meteor.methods({
 			isEvent: false,
 			eventStatus: "wating for event...",
 			// add admin to userslist instantly
-			user: new Array({
+			user: new Array({	
 												"id": creator,
+												"username": user.username,
+												"email": user.email,
 					    					"order": [],
 										    "price": [],
 										    "confirm": false,
@@ -86,9 +89,12 @@ Meteor.methods({
 		
 	/// Adding user to the groupe
   'groupe.user.addNew':function(thisGroupeId, userId){  	
-  	//// Adding user id to this groupe                     
+  	//// Adding user id to this groupe 
+  	let user = ListOfUsers.findOne({"id": userId});                    
     let userInfo =	{
 				    					"id": userId,
+				    					"username": user.username,
+											"email": user.email,
 				    					"order": [],
 									    "price": [],
 									    "confirm": false,
