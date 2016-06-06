@@ -44,6 +44,11 @@ Meteor.methods({
 	},
 
 
+	'pizzaDay.user.confirm': function(thisGroupeId, thisUser){
+		return Groups.find({ _id: thisGroupeId })	
+	},
+
+
 	// Creating new groupe
 	'groupe.createNew': function(groupName, creator){
 		let user = ListOfUsers.findOne({"id": creator});
