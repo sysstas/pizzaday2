@@ -45,7 +45,12 @@ Meteor.methods({
 
 
 	'pizzaDay.user.confirm': function(thisGroupeId, thisUser){
-		return Groups.find({ _id: thisGroupeId })	
+		var thisUser = thisUser;
+		let testObject = Groups.findOne({_id: thisGroupeId}).user;
+		var result = testObject.filter(function(v) {
+    return v.id === thisUser; 
+			})[0].confirm; 
+		console.log(result);
 	},
 
 

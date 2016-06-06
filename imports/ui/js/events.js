@@ -106,13 +106,15 @@ Template.addDishToMenu.events({
 
 Template.Pizzaday.events({
   "click .confirm": function (event){
-    
+    let thisGroupeId = Session.get("idgroupe");
+    let thisUser = Meteor.userId();
 
-    let a = Groups.find({_id:"e9sc7ogDp8pwY2uSX","user.id":"Sa8hFhaMHYxFzDmkd"});
+
+    /*let a = Groups.find({_id:"e9sc7ogDp8pwY2uSX","user.id":"Sa8hFhaMHYxFzDmkd"});
     let b = a.fetch();
 
-    console.log(b);
-    /*Meteor.call('pizzaDay.user.confirm', thisGroupeId, thisUser,function(error, result){
+    console.log(b);*/
+    Meteor.call('pizzaDay.user.confirm', thisGroupeId, thisUser);/*function(error, result){
         if(error){
           console.log(error.reason);
           return;
