@@ -57,9 +57,17 @@ Template.Pizzaday.helpers({
     };
     return count;
   },
-  confirm: function(){    
-    return Userlist.findOne({id: Meteor.userId()}).confirm;    
-  },  
+  /// Resolving confirm state
+  confirm: function(){
+     
+    let testObject = Groups.findOne({_id: Session.get("idgroupe")}).user.filter(function(v) {
+          return v.id === Meteor.userId(); 
+      })[0].confirm;
+    return testObject;
+    /*let isConfirm = Meteor.call('pizzaDay.user.confirm.state', );   
+    return Userlist.findOne({id: Meteor.userId()}).confirm;    */
+  },
+
   complete: function(){    
     return Userlist.findOne({id: Meteor.userId()}).complete;    
   },

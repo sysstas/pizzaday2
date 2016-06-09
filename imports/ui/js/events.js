@@ -101,6 +101,14 @@ Template.addDishToMenu.events({
     $("#addDishToMenu").toggle('hide');  
     return false;
   }
+});
+
+
+Template.listOfGroups.events({
+  "click .removeGroupe": function () {    
+    var thisGroupeId = Session.get("idgroupe");    
+    Meteor.call('groupe.remove', this._id); 
+  },  
 }); 
 
 

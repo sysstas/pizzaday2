@@ -45,14 +45,18 @@ Meteor.methods({
 
 
 	'pizzaDay.user.confirm': function(thisGroupeId, thisUser){
-		var thisUser = thisUser;
-		let testObject = Groups.findOne({_id: thisGroupeId}).user;
-		var result = testObject.filter(function(v) {
-    return v.id === thisUser; 
-			})[0].confirm; 
-		console.log(result);
-	},
+		//// Here I can get confirm value
+		/*let testObject = Groups.findOne({_id: thisGroupeId}).user.filter(function(v) {
+    			return v.id === thisUser; 
+			})[0].confirm;;
+		return testObject;*/
 
+		Groups.update({ _id: thisGroupeId },{user:{id: thisUser}},{$set: {
+								  		confirm: true
+								  	}
+								  });
+	},
+		
 
 	// Creating new groupe
 	'groupe.createNew': function(groupName, creator){
@@ -82,6 +86,10 @@ Meteor.methods({
     	});
 	},
 
+	'groupe.remove':function(self){
+		Groups.remove(self);
+		//Groups.update({ $pull:{_id: thisGroupeId}});
+	},
 
 	///// checking if is user in the groupe
 	'groupe.user.isIn':function(thisGroupeId, userId){
