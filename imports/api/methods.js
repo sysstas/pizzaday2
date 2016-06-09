@@ -45,17 +45,32 @@ Meteor.methods({
 
 
 	'pizzaDay.user.confirm': function(thisGroupeId, thisUser){
-		//// Here I can get confirm value
-		/*let testObject = Groups.findOne({_id: thisGroupeId}).user.filter(function(v) {
-    			return v.id === thisUser; 
-			})[0].confirm;;
-		return testObject;*/
-
-		Groups.update({ _id: thisGroupeId },{user:{id: thisUser}},{$set: {
-								  		confirm: true
-								  	}
-								  });
+		Groups.update(
+			{ _id: thisGroupeId, "user.id":thisUser}, 
+			{$set:{"user.$.confirm": true}}
+		);
 	},
+
+
+	'pizzaDay.user.orderDish': function(thisGroupeId, thisUser, self){
+		
+    Groups.update({ _id: thisGroupeId, "user.id":thisUser},{ 
+      $push:{
+              "user.$.order": self.dish,
+              "user.$.price": self.price
+            }
+		});
+
+    Groups.update({ _id: thisGroupeId},{ 
+      $push:{
+              totalOrder: {
+                            totalorder: self.dish,
+                            totalprice: self.price
+                          }
+            }
+    });
+	},
+		
 		
 
 	// Creating new groupe

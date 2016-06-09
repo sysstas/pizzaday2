@@ -113,95 +113,21 @@ Template.listOfGroups.events({
 
 
 Template.Pizzaday.events({
-  "click .confirm": function (event){
+  "click .confirm": function (){
     let thisGroupeId = Session.get("idgroupe");
     let thisUser = Meteor.userId();
-
-
-    /*let a = Groups.find({_id:"e9sc7ogDp8pwY2uSX","user.id":"Sa8hFhaMHYxFzDmkd"});
-    let b = a.fetch();
-
-    console.log(b);*/
-    Meteor.call('pizzaDay.user.confirm', thisGroupeId, thisUser);/*function(error, result){
-        if(error){
-          console.log(error.reason);
-          return;
-        }
-        if (result){
-          if (result === 11)  {
-            // If user is not in the groupe - adding it to the groupe            
-            console.log("result" +result);
-          }
-        }
-    });*/
-
     
-    /*Userlist.update({_id: thisUser._id},{ 
-      $set: { confirm: true }
-    });*/
+    Meteor.call('pizzaDay.user.confirm', thisGroupeId, thisUser);
   },
-  /*
-  "click .order": function (event) { 
-    var thisUser = Userlist.findOne({id: Meteor.userId()});               
-    Userlist.update({_id: thisUser._id},{ 
-      $push:{
-              order: this.dish,
-              price: this.price
-            }
-    });
-    Groups.update({ _id: Session.get("idgroupe") },{ 
-      $push:{
-              totalOrder: {
-                            totalorder: this.dish,
-                            totalprice: this.price
-                          }
-            }
-    });
+
+  "click .orderDish": function () { 
+    let thisGroupeId = Session.get("idgroupe");
+    let thisUser = Meteor.userId();
+    let self = this;
+
+    Meteor.call('pizzaDay.user.orderDish', thisGroupeId, thisUser, self);    
   },
-  
-  "click .complete": function (event){
-    var thisgroupe = Groups.findOne({_id:Session.get("idgroupe")});
-    var thisUser = Userlist.findOne({id: Meteor.userId()});
-    var AdminId = thisgroupe.creator;
-    var AdminEmail = Userlist.findOne({id: AdminId }).email;
-    var UserEmail = thisUser.email;
-    var arr = thisUser.price;          
-      var array_elements = thisUser.order;                   ///////////////////////////////////
-      var friendlyOrder = new Array();                                                        //
-      array_elements.sort();                                                                  //
-      var current = null;                                                                     //
-      var cnt = 0;                                                                            //
-      for (var i = array_elements.length -1 ;  i >= 0; i--) {                                 //
-        if (array_elements[i] != current) {                                                   //
-          if (cnt > 0) {                                                                      //  
-                   friendlyOrder.push(current + ' : ' + cnt);                                 //
-                                                                                              //
-          }                             ////////////////////////////////////////////////////////
-          current = array_elements[i];  //// Here I forming user friendly list from array///////
-          cnt = 1;                      ////////////////////////////////////////////////////////
-        } else {                                                                              //
-          cnt++;                                                                              //
-        }                                                                                     //
-      }                                                                                       //
-      if (cnt > 0) {                                                                          //
-        friendlyOrder.push(current + ' : ' + cnt);                                            //  
-      }   //////////////////////////////////////////////////////////////////////////////////////
 
-    var count = 0;
-    for(var i = 0; i < arr.length; i++){
-        count = count + parseFloat(arr[i]);
-    };
-    var EmalText = "You order this:\n" + friendlyOrder + "\n You should give to admin: " + count +" $ \n" + thisgroupe.emailTextConfirmOrder;
-    Userlist.update({_id: thisUser._id},{ 
-      $set: { complete: true }
-    });
-
-    Meteor.call('sendEmail',
-            UserEmail,
-            AdminEmail,            
-            "Your Pizzaday order",
-            EmalText);
-  }*/
 }); 
 
     

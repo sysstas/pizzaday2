@@ -47,25 +47,30 @@ Template.Pizzaday.helpers({
     return  Groups.findOne({ _id: Session.get("idgroupe") }).menu; 
   },
   orders:function(){
-    return Userlist.findOne({id: Meteor.userId()}).order; 
+    //return Userlist.findOne({id: Meteor.userId()}).order; 
+    let orders = Groups.findOne({_id: Session.get("idgroupe")}).user.filter(function(v) {
+          return v.id === Meteor.userId(); 
+      })[0].order;
+    return orders;    
   }, 
   total:function(){
-    var arr = Userlist.findOne({id: Meteor.userId()}).price
+    let arr = Groups.findOne({_id: Session.get("idgroupe")}).user.filter(function(v) {
+          return v.id === Meteor.userId(); 
+      })[0].price;
     var count = 0;
-    for(var i = 0; i < arr.length; i++){
+    for(let i = 0; i < arr.length; i++){
         count = count + parseFloat(arr[i]);
     };
     return count;
   },
   /// Resolving confirm state
-  confirm: function(){
-     
-    let testObject = Groups.findOne({_id: Session.get("idgroupe")}).user.filter(function(v) {
+  confirm: function(){     
+    let isConfirm = Groups.findOne(
+        {_id: Session.get("idgroupe")}
+        ).user.filter(function(v){
           return v.id === Meteor.userId(); 
       })[0].confirm;
-    return testObject;
-    /*let isConfirm = Meteor.call('pizzaDay.user.confirm.state', );   
-    return Userlist.findOne({id: Meteor.userId()}).confirm;    */
+    return isConfirm;    
   },
 
   complete: function(){    

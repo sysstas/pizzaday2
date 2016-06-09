@@ -1,0 +1,83 @@
+#Meteor. #Collections. #MongoDB #Arrays #NestedObjects
+
+How to update specific element in collection if it is an object nested in array which is nested in object.
+
+Example:
+ collection:
+		Groups
+
+{
+	"_id" : "NcwdxMLhzkCDK5e2Q",
+	"groupName" : "Groupe 1",
+	"creator" : "Sa8hFhaMHYxFzDmkd",
+	"eventDate" : "",
+	"isEvent" : false,
+	"eventStatus" : "wating for event...",
+	"user" : [
+		{
+			"id" : "Sa8hFhaMHYxFzDmkd",
+			"username" : "2@gmail.com",
+			"email" : "2@gmail.com",
+			"order" : [ ],
+			"price" : [ ],
+			"confirm" : false,
+			"complete" : false,
+			"emailText" : ""
+		},
+		{
+			"id" : "KPi9JwvEohKJsFyL4",
+			"username" : "sysstas@gmail.com",
+			"email" : "sysstas@gmail.com",
+			"order" : [ ],
+			"price" : [ ],
+			"confirm" : false,
+			"complete" : false,
+			"emailText" : ""
+		}
+	],
+	"menu" : [ ],
+	"totalOrder" : [ ],
+	"totalDISHES" : [ ],
+	"buyingStatus" : false,
+	"emailTextConfirmOrder" : " With love, your Pizzaday!! "
+}
+
+
+task: to change value in groupe "_id" : "NcwdxMLhzkCDK5e2Q" in user with "id" : "Sa8hFhaMHYxFzDmkd", of element "confirm" from "false" to "true".
+
+Solution:
+
+	events.js
+
+	...
+
+	Template.Pizzaday.events({
+	  "click .confirm": function (event){
+	    let thisGroupeId = Session.get("idgroupe");
+	    let thisUser = Meteor.userId();
+	    
+	    Meteor.call('pizzaDay.user.confirm', thisGroupeId, thisUser);
+	  },  
+	}); 
+	...
+
+	methods.js
+
+	...
+
+	'pizzaDay.user.confirm': function(thisGroupeId, thisUser){
+		Groups.update(
+			{ _id: thisGroupeId, "user.id":thisUser}, 
+			{$set:{"user.$.confirm": true}}
+		);
+	},
+	...
+
+	The point is '$' in array definition of $set part.
+	Also it is very important to put the "user.id" in duble-quots/quots. Because it is dot notation.
+
+	references: 
+
+	http://stackoverflow.com/questions/34699768/meteor-update-nested-object-in-document-array
+
+
