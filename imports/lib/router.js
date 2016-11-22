@@ -16,11 +16,6 @@ import '../ui/templates/listOfUsers.html';
 import '../ui/templates/addDishToMenu.html';
 import '../ui/templates/Pizzaday.html';
 
-
-
-
-
-
 Meteor.subscribe('groups');
 
 
